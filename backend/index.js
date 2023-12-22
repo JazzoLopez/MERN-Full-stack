@@ -8,6 +8,8 @@ db();
 
 const app = express();
 
-app.listen(process.env.SERVER_PORT, () => {
-    console.log(`Servidor corriendo en el puerto: '${process.env.SERVER_PORT}'`)
+const port = process.env.SERVER_PORT || 4000
+
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto: '${port}'`)
 })
