@@ -1,25 +1,15 @@
 {
-  "name": "mern.jazziel.back",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Proyecto de udemy para aprender de diferentes tecnologias",
+  "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/JazzoLopez/MERN-Full-stack.git"
-  },
-  "keywords": [
-    "Mongo",
-    "Express",
-    "React",
-    "Node"
-  ],
-  "author": "Jazziel Rodriguez Lopez",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JazzoLopez/MERN-Full-stack/issues"
-  },
-  "homepage": "https://github.com/JazzoLopez/MERN-Full-stack#readme"
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
