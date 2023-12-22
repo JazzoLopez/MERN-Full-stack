@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 dotenv.config({
     path: './.env'
 })
-
+import db from "./config/db.js";
+db();
 
 const app = express();
 
