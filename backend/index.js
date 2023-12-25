@@ -8,6 +8,11 @@ db();
 
 const app = express();
 
+//*ROUTING
+app.get('/', (req, res) => {
+    res.send('Hola desde el endpoint raiz')
+})
+
 const port = process.env.SERVER_PORT || 4000
 
 app.listen(port, () => {
