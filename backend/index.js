@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from 'dotenv';
+import userRoutes from "./routes/userRoutes.js";
 dotenv.config({
     path: './.env'
 })
@@ -9,9 +10,7 @@ db();
 const app = express();
 
 //*ROUTING
-app.get('/', (req, res) => {
-    res.send('Hola desde el endpoint raiz')
-})
+app.use('/api/usuarios',userRoutes)
 
 const port = process.env.SERVER_PORT || 4000
 
