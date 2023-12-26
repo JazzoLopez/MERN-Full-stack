@@ -9,6 +9,7 @@ db();
 
 const app = express();
 
+app.use(express.json());
 //*ROUTING
 app.use('/api/usuarios',userRoutes)
 
