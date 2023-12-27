@@ -7,9 +7,18 @@ const users = (req, res) => {
 const register = async (req, res) => {
     try{
         const newUser = new User(req.body);
-        const userSave = await  newUser.save();
+        const {email} = req.body;
+        const userExist = await User.findOne({email})
+        
+        if (userExist){
+           const error = new Error('Usuario ya registrado')
+           return res.status(400).json({msg: error.message})
+        }
+        else{
+        const userSave = await newUser.save();
         console.log(req.body)
         res.json({userSave})
+    }
     }catch(err){
         console.log(err.msg)
     }
