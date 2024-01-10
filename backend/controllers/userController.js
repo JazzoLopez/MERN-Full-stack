@@ -1,10 +1,6 @@
 import User from "../models/users.js"
 import generateId from "../helpers/generateID.js"
 
-const users = (req, res) => {
-    res.json({msg:'Desde api/usuarios'})
-}
-
 const register = async (req, res) => {
     const {email} = req.body;
     const userExist = await User.findOne({email})
@@ -19,11 +15,15 @@ const register = async (req, res) => {
         newUser.token = generateId();
         const userSave = await newUser.save();
         console.log(req.body)
-        res.json({userSave})
+        res.json({userSave});
     }catch(err){
-        console.log(err.msg)
+        console.log(err.msg);
     }
     
 }
 
-export {users, register}
+const authenticateUser = async (req, res) => {
+    
+}
+
+export {authenticateUser, register}
