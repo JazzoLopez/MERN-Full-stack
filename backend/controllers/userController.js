@@ -1,5 +1,6 @@
 import User from "../models/users.js"
 import generateId from "../helpers/generateID.js"
+import generateJwt from "../helpers/generateJwt.js";
 
 const register = async (req, res) => {
     const {email} = req.body;
@@ -34,6 +35,19 @@ const authenticateUser = async (req, res) => {
     if(!user.confirmed){
         const error = new Error('Usuario no confirmado');
         return res.status(400).json({msg: error.message})
+    }
+
+    const matchPassword = await user.matchPassword(password);
+    if(!matchPassword){
+        const error = new Error('Contraseña incorrecta');
+        return res.status(400).json({msg: error.message})
+    } else {
+        res.json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            token: generateJwt(user._id)
+        })
     }
 }
 
