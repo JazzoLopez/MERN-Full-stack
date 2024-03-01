@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from 'dotenv';
 import userRoutes from "./routes/userRoutes.js";
+import morgan from "morgan";
 dotenv.config({
     path: './.env'
 })
@@ -8,7 +9,7 @@ import db from "./config/db.js";
 db();
 
 const app = express();
-
+app.use(morgan('dev'));
 app.use(express.json());
 //*ROUTING
 app.use('/api/usuarios',userRoutes)

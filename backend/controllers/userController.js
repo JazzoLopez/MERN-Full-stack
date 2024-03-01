@@ -17,13 +17,24 @@ const register = async (req, res) => {
         console.log(req.body)
         res.json({userSave});
     }catch(err){
+        console.log(req.body)
         console.log(err.msg);
     }
     
 }
 
 const authenticateUser = async (req, res) => {
-    
+    const {email, password} = req.body;
+    const user = await User.findOne({email});
+    if(!user){
+        const error = new Error('Usuario no registrado');
+        return res.status(400).json({msg: error.message})
+    }
+
+    if(!user.confirmed){
+        const error = new Error('Usuario no confirmado');
+        return res.status(400).json({msg: error.message})
+    }
 }
 
 export {authenticateUser, register}
