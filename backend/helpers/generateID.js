@@ -5,4 +5,5 @@ const generateId = () => {
     return random + date;
 }
 
+//id random
 export default generateId
